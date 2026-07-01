@@ -1,0 +1,37 @@
+{
+  "mcpServers": {
+    "medical_kb": {
+      "command": "python",
+      "args": ["mcp_servers/medical_kb_server.py"],
+      "description": "Medical knowledge base — symptom lookup and red flag checking",
+      "transport": "stdio"
+    },
+    "pdf_parser": {
+      "command": "python",
+      "args": ["mcp_servers/pdf_parser_server.py"],
+      "description": "PDF text and table extraction for medical history documents",
+      "transport": "stdio"
+    },
+    "places_api": {
+      "command": "python",
+      "args": ["mcp_servers/places_server.py"],
+      "description": "Google Maps Places API — nearby healthcare facility search",
+      "transport": "stdio",
+      "env": {
+        "GOOGLE_MAPS_API_KEY": "${GOOGLE_MAPS_API_KEY}"
+      }
+    },
+    "notifier": {
+      "command": "python",
+      "args": ["mcp_servers/notifier_server.py"],
+      "description": "Email and SMS reminder scheduling via SendGrid and Twilio",
+      "transport": "stdio",
+      "env": {
+        "SENDGRID_API_KEY": "${SENDGRID_API_KEY}",
+        "TWILIO_ACCOUNT_SID": "${TWILIO_ACCOUNT_SID}",
+        "TWILIO_AUTH_TOKEN": "${TWILIO_AUTH_TOKEN}",
+        "TWILIO_FROM_NUMBER": "${TWILIO_FROM_NUMBER}"
+      }
+    }
+  }
+}
